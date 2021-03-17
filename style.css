@@ -40,10 +40,10 @@
     cursor: pointer;
     position: relative;
     padding:10px 5px 5px 5px ;
-    background:rgb(73, 50, 128);
+    background:rgb(247, 208, 36);
     font: size 15;
     transition:0.2s;
-    color: #fff;
+    color: rgb(255, 255, 255);
 
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -98,7 +98,7 @@
     left: 48%;
     width: 100px;
     height: 40px;
-    background-color: rgb(214, 106, 73);
+    background:rgb(247, 208, 36);
     padding:2px;
     font-size: 16px;
     font-weight: bolder;

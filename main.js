@@ -50,4 +50,12 @@ function newElement(){
       div.style.display ="none";
     }
   }
+  // save already done list
+
+
+  
+
+
+
+
 }

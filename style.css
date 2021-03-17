@@ -1,3 +1,4 @@
+
 .main{
     width: 100%;
     max-width:800px;
@@ -5,8 +6,9 @@
     text-align:center;
     font-size: 2em;
   }
+ 
   .header {
-    color: #414141;
+  
     margin-top: 10px;
     margin-bottom: 15px;
     color: #3A0088;
@@ -14,9 +16,10 @@
     font-weight: 20;
     font-size: 2.5rem;
   }
+
   .btn-addnew{
     border-radius:3px;
-    padding:9px;
+    padding:10px;
     color: #FFFFFF;
     font-size: 12px;
     text-align: center;
@@ -28,18 +31,25 @@
     background-color:	#4682B4
   }
   ul{
-      text-align: center;
+    text-align: center;
     margin:10px ;
     padding:0 ;
    
   }
   ul li {
+    cursor: pointer;
     position: relative;
     padding:10px 5px 5px 5px ;
     background:rgb(73, 50, 128);
     font: size 15;
     transition:0.2s;
     color: #fff;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
   }
   ul li:hover{
     background: rgb(231, 226, 226);
@@ -48,6 +58,7 @@
   ul li.checked {
     background:#003C9D;
     color:#FFFFFF;
+    text-decoration: line-through;
   }
   ul li.checked::before{
     content:'';
@@ -65,7 +76,7 @@
     position: absolute;
     right:0;
     top:0;
-    padding:12px 16px 12px 16px;
+    padding:12px 16px 3px 16px;
   }
   .close:hover {
     background-color: #f44336;
@@ -105,6 +116,7 @@
   input{
     margin:0;
     font-size:15px;
+    padding: 8px;
   }
   h1{
     font-size: 2em;

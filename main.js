@@ -25,6 +25,7 @@ list.addEventListener('click',function(ev){
     ev.target.classList.toggle('checked');
   }
 },false);
+
 //create new list when click on add btn
 function newElement(){
   var li =document.createElement("li");
@@ -51,11 +52,5 @@ function newElement(){
     }
   }
   // save already done list
-
-
-  
-
-
-
 
 }

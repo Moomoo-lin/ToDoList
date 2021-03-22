@@ -18,6 +18,8 @@ for(i=0;i<close.length;i++){
   }
 }
 
+
+
 //checked symbol
 var list =document.querySelector('ul');
 list.addEventListener('click',function(ev){
@@ -25,6 +27,36 @@ list.addEventListener('click',function(ev){
     ev.target.classList.toggle('checked');
   }
 },false);
+
+//save waitlist
+function Waitlist(){
+var waitlist =document.getElementsByClassName('checked');
+var i;
+
+  for(i=0;i<=waitlist.length;i++){
+  waitlist[i].style.display="none";
+ }
+}
+//Click on All btn to show every list
+function showall(){
+  var alllist =document.querySelector('ul');
+  alllist.addEventListener('click',function(ev){
+    if(ev.target.tagName ==='LI'){
+      var div =this.parentElement;
+    div.style.display="visible";
+    }
+  },false);
+}
+//save DONElist
+function Donelist(){
+  var donelist =document.getElementsByTagName('li');
+  var i;
+  
+     for(i=0;i<=donelist.length;i++){
+    donelist[i];
+  }
+ 
+  }
 
 //create new list when click on add btn
 function newElement(){
@@ -36,6 +68,7 @@ function newElement(){
     alert("你沒有寫任何東西");
   }else{
     document.getElementById("myUL").appendChild(li);
+    //addWaititem(inputValue);
   }
   document.getElementById("myInput").value="";
   
@@ -54,3 +87,4 @@ function newElement(){
   // save already done list
 
 }
+

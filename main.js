@@ -17,7 +17,11 @@ for(i=0;i<close.length;i++){
     div.style.display="none";
   }
 }
-
+document.getElementById("myInput").onkeypress=function(event){
+  if(event.keycode===13){
+    newElement();
+  }
+};
 
 
 //checked symbol
@@ -40,7 +44,7 @@ list.addEventListener('click',function(ev){
 function Waitlist(){
 
          //跑出HTMLCollection [li.checked]
-         load();
+     
         if(todolist!=null){
           for(var i=0;i<todolist.length;i++){
             if(!todolist[i].done){
@@ -48,8 +52,7 @@ function Waitlist(){
             }
           }
         }
-
-
+  
 
             // if(waitlist)
            //   console.log(waitlist);
@@ -83,16 +86,13 @@ function Donelist(){
   }
 
 //create new list when click on add btn
+function newElement(e){
+
  var obj_list ={
     todo: "",
     done:false
   };
   
-
-function newElement(){
-
- 
-
   var li =document.createElement("li");
   var inputValue =document.getElementById("myInput").value;
   var t = document.createTextNode(inputValue);
@@ -102,15 +102,16 @@ function newElement(){
   }else{
     document.getElementById("myUL").appendChild(li);
 
-    obj_list.todo=document.getElementById("myInput").value;
-    //load();
-    var todolist=[];
-    todolist.push(obj_list);
-    console.log(obj_list);
+   
+  } 
+  obj_list.todo=document.getElementById("myInput").value;
     
-  }
+    var todolist=[];
+    todolist.push(obj_list);//將值存進todolist中
+    console.log(obj_list);
+   
   document.getElementById("myInput").value="";
-  
+   load();
   var span =document.createElement("SPAN");
   var txt  =document.createTextNode("\u00D7");
   span.className = "close";
@@ -128,7 +129,7 @@ function newElement(){
 }
 
   function load(){
-    var todo=document.getElementById("");
+    var todo=document.getElementById("myUL");
     todostring ="";
     donestring="";
     

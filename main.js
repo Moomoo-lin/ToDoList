@@ -22,44 +22,77 @@ for(i=0;i<close.length;i++){
 
 //checked symbol
 var list =document.querySelector('ul');
+
 list.addEventListener('click',function(ev){
-  if(ev.target.tagName ==='LI'){
+  
+  if(ev.target.tagName ==='LI' ){
     ev.target.classList.toggle('checked');
+    
+    obj_list.done="true";
+    console.log(obj_list);
+    
   }
-},false);
+ 
+}),
+ 
 
 //save waitlist
 function Waitlist(){
-var waitlist =document.getElementsByClassName('checked');
-var i;
 
-  for(i=0;i<=waitlist.length;i++){
-  waitlist[i].style.display="none";
- }
+         //跑出HTMLCollection [li.checked]
+         load();
+        if(todolist!=null){
+          for(var i=0;i<todolist.length;i++){
+            if(!todolist[i].done){
+              todostring='<li'+ 'class="todo" '+todolist[i].todo+'>'+'</li>';
+            }
+          }
+        }
+
+
+
+            // if(waitlist)
+           //   console.log(waitlist);
+            // for(var i=0;i<=waitlist.length;i++){
+         
+        // waitlist[i].style.display="none";
+
+       // }
 }
+
+ window.addEventListener("load",load);
+
 //Click on All btn to show every list
 function showall(){
-  var alllist =document.querySelector('ul');
-  alllist.addEventListener('click',function(ev){
-    if(ev.target.tagName ==='LI'){
-      var div =this.parentElement;
-    div.style.display="visible";
-    }
-  },false);
+  var alllist=document.getElementsByClassName('checked')
+  var i;
+
+  for(i=0;i<=alllist.length;i++){
+    alllist[i].style.display="block";
+
+  }
 }
 //save DONElist
 function Donelist(){
-  var donelist =document.getElementsByTagName('li');
+  var donelist =document.getElementsByClassName('check');
   var i;
-  
-     for(i=0;i<=donelist.length;i++){
-    donelist[i];
-  }
  
+  for(i=0;i<=donelist.length;i++){
+     donelist[i].style.display="none";
+ }
   }
 
 //create new list when click on add btn
+ var obj_list ={
+    todo: "",
+    done:false
+  };
+  
+
 function newElement(){
+
+ 
+
   var li =document.createElement("li");
   var inputValue =document.getElementById("myInput").value;
   var t = document.createTextNode(inputValue);
@@ -68,7 +101,13 @@ function newElement(){
     alert("你沒有寫任何東西");
   }else{
     document.getElementById("myUL").appendChild(li);
-    //addWaititem(inputValue);
+
+    obj_list.todo=document.getElementById("myInput").value;
+    //load();
+    var todolist=[];
+    todolist.push(obj_list);
+    console.log(obj_list);
+    
   }
   document.getElementById("myInput").value="";
   
@@ -87,4 +126,12 @@ function newElement(){
   // save already done list
 
 }
+
+  function load(){
+    var todo=document.getElementById("");
+    todostring ="";
+    donestring="";
+    
+
+  }
 

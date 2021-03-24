@@ -60,34 +60,51 @@ list.addEventListener('click',function(ev){
 //save waitlist
 function Waitlist(){
          //跑出HTMLCollection [li.checked]
+         checked=$(".checked");
+         Todo=$(".todo");
 
-        if(todolist!=null){
-          for(var i=0;i<todolist.length;i++){
-            if(!todolist[i].done){
-              todostring='<li'+ 'class="todo" '+todolist[i].todo+'>'+'</li>';
-            }
-          }
-        }
-  
-
-            // if(waitlist)
-           //   console.log(waitlist);
+         $(".checked").hide();
+         $(".todo").show();
+        
+       // for(i=0;i<=10;i++){
+       //checked[i].style.display="none";
+       //Todo[i].style.display="";
+       //console.log(checked[i]);
+  }
             // for(var i=0;i<=waitlist.length;i++){
-         
         // waitlist[i].style.display="none";
-
        // }
-}
+//}
 
  
 
 //Click on All btn to show every list
 function showall(){
-  
+  checked=$(".checked");
+  Todo=$(".todo");
+
+
+  $(".checked").show();
+  $(".todo").show();
+ // for(i=0;i<=10;i++){
+  //  checked[i].style.display="";
+   // Todo[i].style.display="";
+   // console.log(checked[i]);
+ // }
+  //console.log( checked);
+
 }
 //save DONElist
 function Donelist(){
-
+  Todo=$(".todo");
+  checked=$(".checked");
+  $(".checked").show();
+  $(".todo").hide();
+  //for(i=0;i<=10;i++){
+   // Todo[i].style.display="none";
+    //checked[i].style.display="";
+    //console.log(Todo[i]);
+ // }
   }
 
 //create new list when click on add btn

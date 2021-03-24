@@ -9,8 +9,10 @@
   }
  
   .header {
-  
-    margin-top: 10px;
+    background: -webkit-linear-gradient(left,rgb(166, 139, 196), #3A0088);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 5px;
     margin-bottom: 15px;
     color: #3A0088;
     letter-spacing: 5px;
@@ -82,6 +84,11 @@
   .close:hover {
     background-color: #f44336;
     color: white;
+  }
+  #frog{
+    width:46px;
+    height:45px;
+    animation-iteration-count: infinite; /*設定該特效次數，infinite代表無限。*/
   }
   .Allbtn{
     

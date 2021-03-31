@@ -1,6 +1,15 @@
 //window.onload=load;
 //window.addEventListener("load",load);
 
+const { json } = require("express");
+
+//const { response } = require("express");
+
+
+
+
+
+//利用fetch將值存入後端 並回傳status:200
 
 
 // Create a "close" button and append it to each list item
@@ -34,6 +43,9 @@ function loadData() {
   } 
   else { return []; } 
   } 
+
+
+
 
 //checked symbol
 var list =document.querySelector('ul');
@@ -70,27 +82,19 @@ function Waitlist(){
        //Todo[i].style.display="";
        //console.log(checked[i]);
   }
-            // for(var i=0;i<=waitlist.length;i++){
-        // waitlist[i].style.display="none";
-       // }
-//}
+         
+  
 
  
 
-//Click on All btn to show every list
+//Click on All btn to show every list 全部
 function showall(){
   checked=$(".checked");
   Todo=$(".todo");
-
-
   $(".checked").show();
   $(".todo").show();
- // for(i=0;i<=10;i++){
-  //  checked[i].style.display="";
-   // Todo[i].style.display="";
-   // console.log(checked[i]);
- // }
-  //console.log( checked);
+    
+  
 
 }
 //save DONElist
@@ -99,11 +103,7 @@ function Donelist(){
   checked=$(".checked");
   $(".checked").show();
   $(".todo").hide();
-  //for(i=0;i<=10;i++){
-   // Todo[i].style.display="none";
-    //checked[i].style.display="";
-    //console.log(Todo[i]);
- // }
+ 
   }
 
 //create new list when click on add btn
@@ -113,7 +113,13 @@ function newElement(e){
     todo: "", //儲存使用者輸入的資料
     done:false//對待辦事項進行分類
   };
-  
+
+
+
+  fetch('')
+
+
+
   var li =document.createElement("li");
   var inputValue =document.getElementById("myInput").value;
   var t = document.createTextNode(inputValue);
@@ -160,26 +166,41 @@ function newElement(e){
     donestring="";
     //todolist=loadData();
     //newElement();
-    if(todolist !=null){
+  /*  if(todolist !=null){
       for (var i=0; i<todolist.length; i   ){
         if(!todolist[i].done){
            todostring="<li class='todo'>"+todolist[i].todo+"</li>";
         }else{
              donestring="<li class='checked'>"+todolist[i].todo+"</li>";
             }
-    }
+    }*/
     todo.innerHTML = todoString;
     done.innerHTML = doneString;
-  }
-  else{
+  //}
+ // else{
     todo.innerHTML = "";
     done.innerHTML = "";
     todocount.innerHTML = 0;
     donecount.innerHTML = 0;
+  //}
   }
-  }
-  function update(i,field,value){
 
+  //post串接後端東西
+  
+  const uri='http://localhost:7070/home';
+  fetch(uri,{method:'POST',
+  body:encodeURI(JSON.stringify({
+    name:'kk',
+    age:29
+  })),
+  Headers:{
+    'Content-Type':'application/x-www-form-urlencoded; charset=utf-8'
   }
-   
+})
+.then(res=>{
+  return res.json();
+}).then(result=>{
+  console.log(result);
+});
+
 

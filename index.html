@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <!-- <link href="../dist/aos.css" rel="stylesheet"> -->
+      
 
 <title>To-Do-List</title>
 <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </script>
+
 </head>
 <body>
-
+       
 <div class="main" >
+       
  <div    class="header"  id="myDIV" > 
          <!-- data-aos="fade-up" 浮動效果-->
     <h2>To Do List</h2>
-    <div id="frog" class="animated bounceInDown">
-             
-    </div>
+   
  </div>  
        <div>
        <input type="text" id="myInput" placeholder="請輸入待辦事項">
       <span onclick="newElement()" class="btn-addnew" >+</span>
       </div>
-    
-     <!-- 列出事件 -->
+
+     
+      <!-- 列出事件 -->
      <ul  id="myUL" >
     <li class="checked" >finish todolist</li>
     <li class="todo" >finish todolist</li>
@@ -30,21 +31,29 @@
  
  <div style="text-align: center;" >
           
-         <Button id="All" onfocus=".Allbtn:focus"  class="Allbtn" onfocus="focus" onclick='showall()' >全部</Button>
+         <Button id="All"  class="Allbtn"  onclick='showall()' >全部</Button>
          <Button id="Done" class="Donebtn" onclick='Donelist()' >已完成</Button>
          <Button id="Yet" class="Yetbtn" onclick='Waitlist()' >未完成</Button>
-     
+       
  </div>
+ <div>
+        <ul class="bubble">
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+               <li></li>
+            
+             </ul>
 </div>
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>
+<div class="animate-area">
+<!-- 可以讓鮭魚在這邊游 但現在還看不到 -->
+</div>
+</div>
 
-<!-- <script src="../dist/aos.js"></script> -->
-<!-- <script> 
-        AOS.init();
-    </script>-->
+
 <link href="./style.css" rel="stylesheet" type="text/css">
 <script src="main.js"></script>
 <!-- 放在這才不會讀取不到 發生錯誤 -->

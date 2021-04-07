@@ -1,25 +1,87 @@
 //後端伺服器
+//import CircularJSON from 'circular-json';
 
+const { request } = require('express');
 var express    = require('express');
 var app        = express();
 
  //設定一個port號
-
-
 var port = process.env.PORT || 8080;
 var router = express.Router();
 
-router.get('/', function(req, res) {  
-  res.send('<h1>Hello World</h1>');   //返回hello world 伺服器回應所送出的內容
+//router.get('/', function(req, res) {  
+
+
+
+ // res.send('<h1>Hello World</h1>');   //返回hello world 伺服器回應所送出的內容
+
+//});
+
+app.get('/',(req,res)=>{
+  res.send('hello,world')
+})
+//app.use('/home', router);
+
+//TO DO 的部分
+//建立todo data
+
+
+
+/*查詢*/
+ var  sql = 'SELECT * FROM todolist';
+var mysql =require('mysql');
+var connection =mysql.createConnection({
+   host :'localhost',
+   user :'root',
+   password:'lovedali99',
+   database:'todolist',
+
 });
 
-app.use('/home', router);
+//加入fetch得到api
+fetch('http://127.0.0.1:5500/index.html',{
+
+}).then(res=> res.json())
+  .then(data=>{
+
+  })
+  .catch(e=>{
+    
+  })
+
+
+app.get('/home',(req,res)=>{
+  try{
+
+    connection.connect();
+    
+    connection.query(sql,function (err, result) {
+      if(err){
+        console.log('[SELECT ERROR] - ',err.message);
+        throw err;
+      }
+
+     console.log('--------------------------SELECT----------------------------');
+     console.log(result);
+     
+     console.log('------------------------------------------------------------\n\n');  
+      res.send(result);
+     
+    });
+   
+   connection.end(); //這個不能放太後面 會有問題
+  } catch(err){
+    res.status(500).send(err.message);
+  }
+});
+
 
 app.listen(port);
 console.log('Magic happens on port ' + port);
 
 //params 可拿到網址上指定的參數
 
+/*
 //連線資料庫
 var mysql =require('mysql');
 var connection =mysql.createConnection({
@@ -29,9 +91,9 @@ var connection =mysql.createConnection({
    database:'todolist',
 });
 connection.connect();
-
+*/
 /*查詢*/
- 
+ /*
 var  sql = 'SELECT * FROM todolist';
 //查
 connection.query(sql,function (err, result) {
@@ -42,14 +104,17 @@ connection.query(sql,function (err, result) {
  
        console.log('--------------------------SELECT----------------------------');
        console.log(result);
-       console.log('------------------------------------------------------------\n\n');  
        
-      
-      });
+       console.log('------------------------------------------------------------\n\n');  
+   
+
+      });*/
  
-connection.end();
 
 
+//control + c就會把程式停止
+//將撈到的資料庫資料回傳到/home response出來
+//實際串api的方法
 
 
 

@@ -1,9 +1,7 @@
 //window.onload=load;
 //window.addEventListener("load",load);
 
-const { json } = require("express");
 
-//const { response } = require("express");
 
 
 
@@ -109,16 +107,11 @@ function Donelist(){
 //create new list when click on add btn
 function newElement(e){
 
+
  var obj_list ={
     todo: "", //儲存使用者輸入的資料
     done:false//對待辦事項進行分類
   };
-
-
-
-  fetch('')
-
-
 
   var li =document.createElement("li");
   var inputValue =document.getElementById("myInput").value;
@@ -154,6 +147,9 @@ function newElement(e){
       div.style.display ="none";
     }
   }
+  //向後端請求
+
+
   // save already done list
 
 }
@@ -187,8 +183,30 @@ function newElement(e){
 
   //post串接後端東西
   
-  const uri='http://localhost:7070/home';
-  fetch(uri,{method:'POST',
+  /*const uri='http://localhost:7070/home';
+
+  const { response } = require('express');
+  var config =require('./index.js');
+  var db= config.db;
+ 
+  db.query("SELECT * FROM todolist",function(err, rows,fields){
+    if(err){
+      console.log(err);
+      return;
+    }
+    console.log(rows);
+    console.log(fields);
+  });
+  db.query("INSERT INTO todolist.todolist VALUES(NULL,'Hello')", 
+  function(err, result) {
+  if(err){
+    console.log(err);
+    return;
+  }
+  console.log(result);
+});
+
+  /*fetch(uri,{method:'POST',
   body:encodeURI(JSON.stringify({
     name:'kk',
     age:29
@@ -201,6 +219,6 @@ function newElement(e){
   return res.json();
 }).then(result=>{
   console.log(result);
-});
+});*/
 
 

@@ -15,8 +15,17 @@
  <div    class="header"  id="myDIV" > 
          <!-- data-aos="fade-up" 浮動效果-->
     <h2>To Do List</h2>
-   
- </div>  
+ </div> 
+        <script>
+                let src="http://localhost:8080/home";
+                fetch(src).then(function(response){
+                console.log(response);
+                return response.text();//用字串方式取回物件
+                }).then(function(result){
+                        console.log("最終的資料",result);
+                });
+                
+        </script>
        <div>
        <input type="text" id="myInput" placeholder="請輸入待辦事項">
       <span onclick="newElement()" class="btn-addnew" >+</span>

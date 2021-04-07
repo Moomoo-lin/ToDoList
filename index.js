@@ -24,7 +24,7 @@ app.get('/',(req,res)=>{
 
 //TO DO 的部分
 //建立todo data
-
+//FETCH
 
 
 /*查詢*/
@@ -39,15 +39,6 @@ var connection =mysql.createConnection({
 });
 
 //加入fetch得到api
-fetch('http://127.0.0.1:5500/index.html',{
-
-}).then(res=> res.json())
-  .then(data=>{
-
-  })
-  .catch(e=>{
-    
-  })
 
 
 app.get('/home',(req,res)=>{

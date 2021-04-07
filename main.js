@@ -162,23 +162,23 @@ function newElement(e){
     donestring="";
     //todolist=loadData();
     //newElement();
-  /*  if(todolist !=null){
+  if(todolist !=null){
       for (var i=0; i<todolist.length; i   ){
         if(!todolist[i].done){
            todostring="<li class='todo'>"+todolist[i].todo+"</li>";
         }else{
              donestring="<li class='checked'>"+todolist[i].todo+"</li>";
             }
-    }*/
+    }
     todo.innerHTML = todoString;
     done.innerHTML = doneString;
-  //}
- // else{
+  }
+ else{
     todo.innerHTML = "";
     done.innerHTML = "";
     todocount.innerHTML = 0;
     donecount.innerHTML = 0;
-  //}
+ }
   }
 
   //post串接後端東西

@@ -1,13 +1,18 @@
 //後端伺服器
-//import CircularJSON from 'circular-json';
+
 
 const { request } = require('express');
 var express    = require('express');
 var app        = express();
 
+var xhr = new XMLHttpRequest();
+xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
  //設定一個port號
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 7000;
 var router = express.Router();
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 //router.get('/', function(req, res) {  
 
@@ -20,10 +25,7 @@ var router = express.Router();
 app.get('/',(req,res)=>{
   res.send('hello,world')
 })
-//app.use('/home', router);
 
-//TO DO 的部分
-//建立todo data
 //FETCH
 
 
@@ -64,6 +66,11 @@ app.get('/home',(req,res)=>{
   } catch(err){
     res.status(500).send(err.message);
   }
+});
+
+app.post('/newtask',(req,res)=>{
+  console.log(req.body.data);
+  res.send('ok');
 });
 
 

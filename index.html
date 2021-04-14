@@ -13,31 +13,13 @@
 <div class="main" >
        
  <div    class="header"  id="myDIV" > 
-         <!-- data-aos="fade-up" 浮動效果-->
+        
     <h2>To Do List</h2>
+    <h5>-一個還沒寫完的list</h5>
  </div> 
-        <div id="list">
-        </div>
-        <script>
-                let list=document.getElementById("list");
-                let src="http://localhost:8080/home";
-                fetch(src).then(function(response){
-                
-                return response.json();//用字串方式取回物件
-
-                console.log(response);
-                }).then(function(data){
-                        console.log("最終的資料",result);
-                        list.innerHTML="";
-                        let product;
-                        for(let i=0;i<data.length;i++){
-                                product=data[i];
-                                list1.innerHTML+=product.name.bold();
-                        }
-
-                });
-                
-        </script>
+ 
+ 
+    
        <div>
        <input type="text" id="myInput" placeholder="請輸入待辦事項">
       <span onclick="newElement()" class="btn-addnew" >+</span>
@@ -57,6 +39,7 @@
          <Button id="Yet" class="Yetbtn" onclick='Waitlist()' >未完成</Button>
        
  </div>
+
  <div>
         <ul class="bubble">
                <li></li>
@@ -69,15 +52,24 @@
             
              </ul>
 </div>
+<div class="starback">
+<div id="stars"></div>
+ <div id="stars2"></div>
+ <div id="stars3"></div>
+</div>
 
-   
+<!-- <div class="salmon-block">
         <img class=“wei-image3” src="tenor.gif" />
-        </div>
-<!-- <div class="animate-area"> -->
+        </div> -->
+<div>
+   
+    </div>   
+</div>        
+</div>
+
+        <!-- <div class="animate-area"> -->
     <!-- <img src="tenor.gif" style="position: relative;top:100px";>     -->
 <!-- 可以讓鮭魚在這邊游 但現在還看不到 -->
-</div>
-</div>
 
 
 <link href="./style.css" rel="stylesheet" type="text/css">

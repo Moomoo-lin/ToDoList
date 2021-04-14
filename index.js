@@ -5,22 +5,12 @@ const { request } = require('express');
 var express    = require('express');
 var app        = express();
 
-var xhr = new XMLHttpRequest();
-xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
  //設定一個port號
 var port = process.env.PORT || 7000;
 var router = express.Router();
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
 
-//router.get('/', function(req, res) {  
-
-
-
- // res.send('<h1>Hello World</h1>');   //返回hello world 伺服器回應所送出的內容
-
-//});
 
 app.get('/',(req,res)=>{
   res.send('hello,world')
@@ -31,23 +21,22 @@ app.get('/',(req,res)=>{
 
 /*查詢*/
  var  sql = 'SELECT * FROM todolist';
-var mysql =require('mysql');
-var connection =mysql.createConnection({
-   host :'localhost',
-   user :'root',
-   password:'lovedali99',
-   database:'todolist',
-
-});
+ var mysql =require('mysql');
+const connection =mysql.createConnection({
+      host :'localhost',
+      user :'root',
+      password:'lovedali99',
+      database:'todolist',
+   
+   });
 
 //加入fetch得到api
 
-
+//顯示全部資料
 app.get('/home',(req,res)=>{
   try{
-
+     
     connection.connect();
-    
     connection.query(sql,function (err, result) {
       if(err){
         console.log('[SELECT ERROR] - ',err.message);
@@ -62,16 +51,76 @@ app.get('/home',(req,res)=>{
      
     });
    
+    connection.end(); //這個不能放太後面 會有問題
+  } catch(err){
+    res.status(500).send(err.message);
+  }
+  
+});
+
+  var  addSql = 'INSERT INTO todolist(ID,content,status) VALUES(32,?,?)';
+  var  addSqlParams = ['牙', '0'];
+//post 新增東西
+app.post('/newtask',(req,res)=>{
+
+  try{ 
+    res.send("{"+'\n'+"content:"+req.body.content+'\n'+"status:"+req.body.status+'\n'+"}");//回傳content欄位的值
+  
+    connection.connect();
+   
+     connection.query(addSql,addSqlParams,function (err, result) {
+        if(err){
+         console.log('[INSERT ERROR] - ',err.message);
+         return;
+        }        
+       console.log('--------------------------INSERT----------------------------');
+       //console.log('INSERT ID:',result.insertId);        
+       console.log('INSERT ID:',result);        
+       console.log('-----------------------------------------------------------------\n\n');  
+     });
+   
    connection.end(); //這個不能放太後面 會有問題
   } catch(err){
     res.status(500).send(err.message);
   }
+  
 });
 
-app.post('/newtask',(req,res)=>{
-  console.log(req.body.data);
-  res.send('ok');
+//put  修改東西
+
+app.put('/edittask',(req,res)=>{
+  console.log(req.body);
+  res.send('putok');
+  connect.connection;
+  connection.end();
 });
+
+//delete 刪除東西
+var delSql = 'DELETE FROM todolist where id=7';
+app.delete('/deltask',(req,res)=>{
+  try{
+    let connection =mysql.createConnection({
+      host :'localhost',
+      user :'root',
+      password:'lovedali99',
+      database:'todolist',
+    }); 
+    connection.connect();
+    connection.query(delSql,function (err, result) {
+      if(err){
+        console.log('[DELETE ERROR] - ',err.message);
+        return;
+      }          
+     console.log('--------------------------DELETE----------------------------');
+     console.log('DELETE affectedRows',result.affectedRows);
+     console.log('-----------------------------------------------------------------\n\n');  
+    });
+    connection.end();
+  }catch(err){
+    res.status(500).send(err.message);
+  }
+});
+
 
 
 app.listen(port);

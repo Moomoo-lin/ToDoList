@@ -2,6 +2,15 @@
 //window.addEventListener("load",load);
 
 
+//get後端的全部資料
+let src="http://localhost:7000/home";
+fetch(src,{method:"GET",mode:"no-cors"}).then((response)=>{
+
+ return response.json();//用字串方式取回物件
+console.log(response);
+}).then(function(data){
+        console.log("work");
+});
 
 
 

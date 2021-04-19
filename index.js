@@ -58,26 +58,29 @@ app.get('/home',(req,res)=>{
   
 });
 
-  var  addSql = 'INSERT INTO todolist(ID,content,status) VALUES(32,?,?)';
+  var  addSql = 'INSERT INTO todolist(ID,content,status) VALUES(74,?,?)';
   var  addSqlParams = ['牙', '0'];
 //post 新增東西
 app.post('/newtask',(req,res)=>{
 
   try{ 
-    res.send("{"+'\n'+"content:"+req.body.content+'\n'+"status:"+req.body.status+'\n'+"}");//回傳content欄位的值
+   
   
     connection.connect();
-   
+    
      connection.query(addSql,addSqlParams,function (err, result) {
         if(err){
          console.log('[INSERT ERROR] - ',err.message);
          return;
         }        
+         res.send("{"+'\n'+"content:"+req.body.content+'\n'+"status:"+req.body.status+'\n'+"}");//回傳content欄位的值
        console.log('--------------------------INSERT----------------------------');
        //console.log('INSERT ID:',result.insertId);        
        console.log('INSERT ID:',result);        
        console.log('-----------------------------------------------------------------\n\n');  
      });
+     
+
    
    connection.end(); //這個不能放太後面 會有問題
   } catch(err){

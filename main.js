@@ -1,22 +1,30 @@
 //window.onload=load;
 //window.addEventListener("load",load);
 
+//const { resolveInclude } = require("ejs");
+//const fetch = require("node-fetch");
 
-//get後端的全部資料
+//get後端的全部資料 先不配
 let src="http://localhost:7000/home";
 fetch(src,{method:"GET",mode:"no-cors"}).then((response)=>{
 
- return response.json();//用字串方式取回物件
+  var data=document.getElementsByClassName("datalist");
+  //  data.innerHTML+=response;
 console.log(response);
+return response.json();//用字串方式取回物件
+
+
 }).then(function(data){
         console.log("work");
 });
-
-
-
-
-
+// GET;HOME 可以 但其他的可能要再試看看
+// POST;vewtask有fetch成功 但裡面沒有東西
 //利用fetch將值存入後端 並回傳status:200
+
+//把POST值打入後端 並存進資料庫
+//東西會被包成json檔
+
+
 
 
 // Create a "close" button and append it to each list item

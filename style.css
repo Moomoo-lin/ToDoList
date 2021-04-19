@@ -263,6 +263,7 @@ body{
   }
   input{
     margin:0;
+    width:300px;
     font-size:15px;
     padding: 8px;
   }

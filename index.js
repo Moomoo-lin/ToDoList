@@ -1,7 +1,8 @@
 //後端伺服器
 
 
-const { request } = require('express');
+const { json } = require('body-parser');
+const { request, response } = require('express');
 var express    = require('express');
 var app        = express();
 
@@ -21,7 +22,7 @@ app.get('/',(req,res)=>{
 
 /*查詢*/
  var  sql = 'SELECT * FROM todolist';
- var mysql =require('mysql');
+ const mysql =require('mysql');
 const connection =mysql.createConnection({
       host :'localhost',
       user :'root',
@@ -35,59 +36,70 @@ const connection =mysql.createConnection({
 //顯示全部資料
 app.get('/home',(req,res)=>{
   try{
-     
     connection.connect();
     connection.query(sql,function (err, result) {
       if(err){
         console.log('[SELECT ERROR] - ',err.message);
-        throw err;
+        // throw err;
+        return res.json();
       }
 
      console.log('--------------------------SELECT----------------------------');
      console.log(result);
-     
      console.log('------------------------------------------------------------\n\n');  
-      res.send(result);
+       res.send(result);
      
     });
-   
     connection.end(); //這個不能放太後面 會有問題
   } catch(err){
     res.status(500).send(err.message);
   }
-  
+  // res.end();
 });
 
-  var  addSql = 'INSERT INTO todolist(ID,content,status) VALUES(74,?,?)';
-  var  addSqlParams = ['牙', '0'];
-//post 新增東西
+  const  addSql = 'INSERT INTO todolist(ID,content,status) VALUES(42,?,?)';
+  const  addSqlParams = ['hjhjji', '1'];
+//   post 新增東西
+  // app.post('/newtask',(req,res)=>{
+  //   console.log('ss');
+  //   res.json(req.body);
+  //   res.send(result);
+  // });
+  //用postman打東西時會有相對應的數值
+
 app.post('/newtask',(req,res)=>{
-
-  try{ 
-   
-  
-    connection.connect();
-    
-     connection.query(addSql,addSqlParams,function (err, result) {
-        if(err){
-         console.log('[INSERT ERROR] - ',err.message);
-         return;
-        }        
-         res.send("{"+'\n'+"content:"+req.body.content+'\n'+"status:"+req.body.status+'\n'+"}");//回傳content欄位的值
-       console.log('--------------------------INSERT----------------------------');
-       //console.log('INSERT ID:',result.insertId);        
-       console.log('INSERT ID:',result);        
-       console.log('-----------------------------------------------------------------\n\n');  
-     });
-     
-
-   
-   connection.end(); //這個不能放太後面 會有問題
-  } catch(err){
-    res.status(500).send(err.message);
-  }
-  
-});
+  console.log(req.body);
+  connection.connect();
+  connection.query(addSql,addSqlParams,function(err,result){
+    if(err){
+      console.log(err)
+      console.log('saved to database')
+    } 
+      return res.send(req.body);
+  });
+})
+ 
+// app.post('/newtask',(req,res)=>{
+//   try{ 
+//      connection.connect();
+//      connection.query(addSql,addSqlParams,function (err, result) {
+//         if(err){
+//          console.log('[INSERT ERROR] - ',err.message);
+//          return res.json();
+//        } 
+             
+//        res.send("{"+'\n'+"content:"+res.body.content+'\n'+"status:"+res.body.status+'\n'+"}");//回傳content欄位的值
+//        console.log('--------------------------INSERT----------------------------');
+//        //console.log('INSERT ID:',result.insertId);        
+//        console.log('INSERT ID:',result);        
+//        console.log('-----------------------------------------------------------------\n\n');  
+      
+//       });
+//    connection.end(); //這個不能放太後面 會有問題
+//   } catch(err){
+//     res.status(500).send(err.message);
+//   }
+//   }); 
 
 //put  修改東西
 
@@ -97,6 +109,7 @@ app.put('/edittask',(req,res)=>{
   connect.connection;
   connection.end();
 });
+
 
 //delete 刪除東西
 var delSql = 'DELETE FROM todolist where id=7';

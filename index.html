@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<body>
 <head>
-      
+<meta charset="UTF-8">      
 
 <title>To-Do-List</title>
 <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</script>
 
 </head>
-<body>
+
+
        
 <div class="main" >
        
@@ -17,14 +17,13 @@
     <h2>To Do List</h2>
     <h5>-一個還沒寫完的list</h5>
  </div> 
- 
- 
-    
+      
+       <form >
        <div>
        <input type="text" id="myInput" placeholder="請輸入待辦事項">
-      <span onclick="newElement()" class="btn-addnew" >+</span>
+      <span onclick="newElement()" class="btn-addnew" type="submit" >+</span>
       </div>
-
+     </form>
      
       <!-- 列出事件 -->
     <ul  id="myUL" >
